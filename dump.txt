@@ -1,0 +1,236 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60+36 (git sha1 2833a4450, g++ 13.3.0-6ubuntu2~24.04 -fPIC -O3)
+
+-- Running command `read_verilog ~/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v; proc; opt; dump' --
+
+1. Executing Verilog-2005 frontend: /home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v
+Parsing Verilog input from `/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v' to AST representation.
+verilog frontend filename /home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v
+Generating RTLIL representation for module `\top'.
+Successfully finished Verilog frontend.
+
+2. Executing PROC pass (convert processes to netlists).
+
+2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:10$1 in module top.
+Removed a total of 0 dead cases.
+
+2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 0 assignments to connections.
+
+2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~2 debug messages>
+
+2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\top.$proc$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:10$1'.
+     1/2: $0\cnt[31:0]
+     2/2: $0\led[4:0]
+
+2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\top.\led' using process `\top.$proc$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:10$1'.
+  created $dff cell `$procdff$16' with positive edge clock.
+Creating register for signal `\top.\cnt' using process `\top.$proc$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:10$1'.
+  created $dff cell `$procdff$17' with positive edge clock.
+
+2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\top.$proc$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:10$1'.
+Removing empty process `top.$proc$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:10$1'.
+Cleaned up 2 empty switches.
+
+2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~3 debug messages>
+
+3. Executing OPT pass (performing simple optimizations).
+
+3.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+3.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+3.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+3.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+3.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+3.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$17 ($dff) from module top (D = $add$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:26$6_Y, Q = \cnt, rval = 0).
+Adding SRST signal on $procdff$16 ($dff) from module top (D = $procmux$11_Y, Q = \led, rval = 5'00001).
+Adding EN signal on $auto$ff.cc:337:slice$23 ($sdff) from module top (D = { \led [3:0] \led [4] }, Q = \led).
+
+3.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 5 unused cells and 11 unused wires.
+<suppressed ~6 debug messages>
+
+3.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+3.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+3.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+3.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+3.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+3.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+3.16. Finished fast OPT passes. (There is nothing left to do.)
+
+autoidx 25
+
+attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:1.1-32.10"
+attribute \cells_not_processed 1
+module \top
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:3.11-3.14"
+  wire input 2 \rst
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:5.23-5.26"
+  wire width 5 output 3 \led
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:8.11-8.14"
+  wire width 32 \cnt
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:2.11-2.14"
+  wire input 1 \clk
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:26.18-26.33"
+  wire $ge$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:26$5_Y
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:20.12-20.20"
+  wire $eq$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:20$3_Y
+
+  wire $auto$rtlil.cc:3322:Not$20
+
+  wire $auto$opt_dff.cc:306:combine_resets$21
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:23.20-23.27"
+  wire width 32 $add$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:23$4_Y
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:26.18-26.33"
+  cell $ge $ge$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:26$5
+    parameter \Y_WIDTH 1
+    parameter \B_WIDTH 32
+    parameter \B_SIGNED 0
+    parameter \A_WIDTH 32
+    parameter \A_SIGNED 0
+    connect \Y $ge$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:26$5_Y
+    connect \B 40000000
+    connect \A \cnt
+  end
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:20.12-20.20"
+  cell $logic_not $eq$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:20$3
+    parameter \Y_WIDTH 1
+    parameter \A_WIDTH 32
+    parameter \A_SIGNED 0
+    connect \Y $eq$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:20$3_Y
+    connect \A \cnt
+  end
+
+  cell $reduce_or $auto$opt_dff.cc:307:combine_resets$22
+    parameter \Y_WIDTH 1
+    parameter \A_WIDTH 2
+    parameter \A_SIGNED 0
+    connect \Y $auto$opt_dff.cc:306:combine_resets$21
+    connect \A { $ge$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:26$5_Y $auto$rtlil.cc:3322:Not$20 }
+  end
+
+  cell $not $auto$opt_dff.cc:303:combine_resets$19
+    parameter \Y_WIDTH 1
+    parameter \A_WIDTH 1
+    parameter \A_SIGNED 0
+    connect \Y $auto$rtlil.cc:3322:Not$20
+    connect \A \rst
+  end
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:10.1-29.4"
+  cell $sdffe $auto$ff.cc:337:slice$24
+    parameter \WIDTH 5
+    parameter \SRST_VALUE 5'00001
+    parameter \SRST_POLARITY 0
+    parameter \EN_POLARITY 1
+    parameter \CLK_POLARITY 1
+    connect \SRST \rst
+    connect \Q \led
+    connect \EN $eq$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:20$3_Y
+    connect \D { \led [3:0] \led [4] }
+    connect \CLK \clk
+  end
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:10.1-29.4"
+  cell $sdff $auto$ff.cc:337:slice$18
+    parameter \WIDTH 32
+    parameter \SRST_VALUE 0
+    parameter \SRST_POLARITY 1
+    parameter \CLK_POLARITY 1
+    connect \SRST $auto$opt_dff.cc:306:combine_resets$21
+    connect \Q \cnt
+    connect \D $add$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:23$4_Y
+    connect \CLK \clk
+  end
+
+  attribute \src "/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:26.44-26.51"
+  cell $add $add$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:26$6
+    parameter \Y_WIDTH 32
+    parameter \B_WIDTH 32
+    parameter \B_SIGNED 0
+    parameter \A_WIDTH 32
+    parameter \A_SIGNED 0
+    connect \Y $add$/home/wang/E5/ysyx-workbench/nvboard/runlight/vsrc/runlight.v:23$4_Y
+    connect \B 1
+    connect \A \cnt
+  end
+end
+
+End of script. Logfile hash: 3bf7d9b2d1, CPU: user 0.02s system 0.00s, MEM: 17.59 MB peak
+Yosys 0.60+36 (git sha1 2833a4450, g++ 13.3.0-6ubuntu2~24.04 -fPIC -O3)
+Time spent: 28% 4x opt_expr (0 sec), 13% 2x read_verilog (0 sec), ...
